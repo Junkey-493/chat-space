@@ -15,7 +15,7 @@
     width: 300px;
     color: white;
     float: left;
-    &--side-header {
+    &__side-header {
       background-color: #253141;
       height: 100px;
       display: flex;
@@ -35,14 +35,20 @@
           display: flex;
           &__new-group {
             margin-left: 0.3rem;
+            .icon {
+              color: white;
+            }
           }
           &__edit-user {
             margin-left: 0.3rem;
+            .icon {
+              color: white;
+            }
           }
         }
       }
     }
-    &--groups {
+    &__groups {
       height: calc(100vh - 100px);
       background-color: #2f3e51;
       padding: 20px 20px 0;
@@ -63,7 +69,7 @@
   &__chat-main {
     width: calc(100vw - 300px);
     float: left;
-    &--main-header {
+    &__main-header {
       height: 100px;
       padding: 0 40px;
       display: flex;
@@ -95,7 +101,7 @@
         cursor: pointer;
       }
     }
-    &--messages {
+    &__messages {
       height: calc(100vh - 303px);
       padding: 46px 40px;
       background-color: #fafafa;
@@ -123,7 +129,7 @@
         }
       }
     }
-    &--form {
+    &__form {
       height: 90px;
       padding: 20px 40px;
       background-color: #ddd;
@@ -134,14 +140,10 @@
           position: relative;
           &__text {
             height: 50px;
-            width: 100px;
+            width: 800px;
             padding: 0 40px 0 10px;
             color: #434a54;
             border-style: none;
-            input[type=text] {
-              width: 880px;
-              height: 47px
-            }
             }
           &__image {
             font-size: 1.3rem;
@@ -164,5 +166,5 @@
         }
       }
     }
-  } 
-}
+  }
+} 

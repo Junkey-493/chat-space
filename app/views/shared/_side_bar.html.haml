@@ -1,0 +1,46 @@
+.wrapper__chat-side
+  .wrapper__chat-side__side-header
+    .wrapper__chat-side__side-header__box
+      %h3.wrapper__chat-side__side-header__box__user-name
+        = current_user.name
+      %ul.wrapper__chat-side__side-header__box__menu
+        %li.wrapper__chat-side__side-header__box__menu__new-group
+          = link_to new_group_path do
+            = fa_icon 'pencil-square-o', class: 'icon'
+        %li.wrapper__chat-side__side-header__box__menu__edit-user
+          = link_to edit_user_path(current_user) do
+            = fa_icon 'cog', class: 'icon'
+  .wrapper__chat-side__groups
+    - current_user.groups.each do |group|
+      .wrapper__chat-side__groups__group
+        = link_to group_messages_path(group) do
+          .wrapper__chat-side__groups__group__group-name
+            = group.name
+          .wrapper__chat-side__groups__group__latest-message
+            メッセージはまだありません。
+
+.wrapper__chat-main
+  .wrapper__chat-main__main-header
+    .wrapper__chat-main__main-header__left-box
+      .wrapper__chat-main__main-header__left-box__current-group
+        group-name
+      .wrapper__chat-main__main-header__left-box__member-list
+        Member: junkey
+    .wrapper__chat-main__main-header__edit-btn
+      Edit
+  .wrapper__chat-main__messages
+    .wrapper__chat-main__messages__message
+      .wrapper__chat-main__messages__message__upper-info
+        .wrapper__chat-main__messages__message__upper-info__talker
+          junkey
+        .wrapper__chat-main__messages__message__upper-info__date
+          15:00:00
+      .wrapper__chat-main__messages__message__text
+        no-message
+  .wrapper__chat-main__form
+    %form.wrapper__chat-main__form__new-message{for: "message"}
+      .wrapper__chat-main__form__new-message__input-box
+        %input.wrapper__chat-main__form__new-message__input-box__text{placeholder: "type a message", type: "text", name: "message[content]", id: "message_content"}
+        %label.wrapper__chat-main__orm__new-message__input-box__image{for: "message_image"}
+          %i.fa.fa-image
+      %input.wrapper__chat-main__form__new-message__submit-btn{name: "commit", type: "submit", value: "Send", "data-disable-with": "Send"}
