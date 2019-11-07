@@ -8,7 +8,7 @@ RSpec.describe Message, type: :model do
       end
 
       it 'is valid with image' do
-        expect(build(:message)).to be_valid
+        expect(build(:message, content: nil)).to be_valid
       end
 
       it 'is valid with content and image' do
