@@ -1,49 +1,28 @@
-.flash-box
-  .flash-box__notice
-    グループを作成しました。
 .wrapper
-  .wrapper__chat-side
-    .wrapper__chat-side--side-header
-      .wrapper__chat-side--side-header__box
-        .wrapper__chat-side--side-header__box__user-name
-          chat-space
-        .wrapper__chat-side--side-header__box__menu
-          .wrapper__chat-side--side-header__box__menu__new-group
-          = fa_icon 'edit'
-          .wrapper__chat-side--side-header__box__menu__edit-user
-          =fa_icon 'cog'
-    .wrapper__chat-side--groups
-      .wrapper__chat-side--groups__group
-        .wrapper__chat-side--groups__group__group-name
-          group-name
-        .wrapper__chat-side--groups__group__latest-message
-          no-message
+  = render 'shared/side_bar'
 
+  .chat
+    .header
+      .left-header
+        .left-header__title
+          = @group.name
+        .left-header__members
+          Member :
+          .member
+            = current_user.name
+      .right-header
+        .right-header__button
+          =link_to edit_group_path(@group.id) do
+            = 'Edit'
 
-  .wrapper__chat-main
-    .wrapper__chat-main--main-header
-      .wrapper__chat-main--main-header__left-box
-        .wrapper__chat-main--main-header__left-box__current-group
-          group-name
-        .wrapper__chat-main--main-header__left-box__member-list
-          Member: junkey
-      .wrapper__chat-main--main-header__edit-btn
-        Edit
-    .wrapper__chat-main--messages
-      .wrapper__chat-main--messages__message
-        .wrapper__chat-main--messages__message__upper-info
-          .wrapper__chat-main--messages__message__upper-info__talker
-            chat-space
-          .wrapper__chat-main--messages__message__upper-info__date
-            15:00:00
-        .wrapper__chat-main--messages__message__text
-          no-message
-    .wrapper__chat-main--form
-      .wrapper__chat-main--form__new-message
-        .wrapper__chat-main--form__new-message__input-box
-          .wrapper__chat-main--form__new-message__input-box__text
-            %input{placeholder: "type a message", type: "text"}
-          .wrapper__chat-main--form__new-message__input-box__image
-            =fa_icon 'image'
-        .wrapper__chat-main--form__new-message__submit-btn
-          Send
+    .messages
+      = render @messages
+
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'

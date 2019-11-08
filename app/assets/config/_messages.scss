@@ -1,21 +1,10 @@
-.flash-box{
-  color: white;
-  font-size: 1rem;
-  font-weight: lighter;
-  text-align: center;
-  width: 100vw;
-  &__notice {
-    background-color: #38aef0;
-  }
-}
-
 .wrapper {
   display: block;
   &__chat-side {
     width: 300px;
     color: white;
     float: left;
-    &--side-header {
+    &__side-header {
       background-color: #253141;
       height: 100px;
       display: flex;
@@ -35,14 +24,20 @@
           display: flex;
           &__new-group {
             margin-left: 0.3rem;
+            .icon {
+              color: white;
+            }
           }
           &__edit-user {
             margin-left: 0.3rem;
+            .icon {
+              color: white;
+            }
           }
         }
       }
     }
-    &--groups {
+    &__groups {
       height: calc(100vh - 100px);
       background-color: #2f3e51;
       padding: 20px 20px 0;
@@ -63,7 +58,7 @@
   &__chat-main {
     width: calc(100vw - 300px);
     float: left;
-    &--main-header {
+    &__main-header {
       height: 100px;
       padding: 0 40px;
       display: flex;
@@ -95,7 +90,7 @@
         cursor: pointer;
       }
     }
-    &--messages {
+    &__messages {
       height: calc(100vh - 303px);
       padding: 46px 40px;
       background-color: #fafafa;
@@ -123,46 +118,41 @@
         }
       }
     }
-    &--form {
+
+    .form {
+      background-color: #DDDDDD;
+      box-sizing: border-box;
       height: 90px;
-      padding: 20px 40px;
-      background-color: #ddd;
-      &__new-message {
-        display: flex;
-        &__input-box {
-          width: 100%;
-          position: relative;
-          &__text {
-            height: 50px;
-            width: 100px;
-            padding: 0 40px 0 10px;
-            color: #434a54;
-            border-style: none;
-            input[type=text] {
-              width: 880px;
-              height: 47px
-            }
-            }
-          &__image {
-            font-size: 1.3rem;
-            position: absolute;
-            top: 10px;
-            right: 50px;
-            cursor: pointer;
-          }
-        }
-        &__submit-btn {
-          width: 100px;
-          height: 50px;
+      padding: 20px 50px 20px 40px;
+      &__message {
+        border: none;
+        float: left;
+        height: 50px;
+        width: calc(100% - 150px);
+      }
+      &__mask {
+        background-color: $white;
+        float: left;
+        height: 50px;
+        padding-right: 10px;
+        &__image {
+          font-size: 20px;
           line-height: 50px;
-          text-align: center;
-          padding: 0 15px;
-          margin-left: 15px;
-          background-color: #38AEF0;
-          color: white;
-          cursor: pointer;
+        }
+        .hidden {
+          display: none;
         }
       }
+      &__submit {
+        background-color: $light_blue;
+        border: none;
+        color: $white;
+        float: right;
+        font-size: 16px;
+        height: 50px;
+        margin-left: 15px;
+        padding: 0 30px;
+      }
     }
-  } 
-}
+  }
+} 
